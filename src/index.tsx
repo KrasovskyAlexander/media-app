@@ -1,14 +1,14 @@
 import { render } from "react-dom";
-import sum from "./test";
-import "./main.scss";
-import Btn from "./btn/btn";
+import { BrowserRouter } from "react-router-dom";
 
-console.log(sum(6, 5));
+import App from "./app/App";
+import { ThemeProvider } from "app/providers/ThemeProvider";
 
 render(
-    <div className="block">
-        {sum(6, 5)}
-        <Btn />
-    </div>,
+    <BrowserRouter>
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
+    </BrowserRouter>,
     document.getElementById("root")
 );
