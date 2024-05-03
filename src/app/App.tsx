@@ -1,27 +1,22 @@
-import React, { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
-import { Link } from "react-router-dom";
-
 import "./styles/index.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTheme } from "./providers/ThemeProvider";
-import { AboutPage } from "pages/AboutPage";
-import { MainPage } from "pages/MainPage";
+import { AppRouter } from "./providers/router";
+import { Navbar } from "widgets/Navbar";
+import { Sidebar } from "widgets/Sidebar";
+import { Suspense } from "react";
 
 const App: React.FC = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme } = useTheme();
+
     return (
         <div className={classNames("app", {}, [theme])}>
-            <nav>
-                <button onClick={toggleTheme}>changeTheme</button>
-                <Link to={"/about"}>About</Link>
-                <Link to={"/"}>MainPage</Link>
-            </nav>
-            <Suspense fallback={<>Load...</>}>
-                <Routes>
-                    <Route element={<MainPage />} path={"/"} />
-                    <Route element={<AboutPage />} path={"/about"} />
-                </Routes>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Navbar />
+                <div className="content-page">
+                    <Sidebar />
+                    <AppRouter />
+                </div>
             </Suspense>
         </div>
     );

@@ -19,5 +19,9 @@ export function buildPlugins({
                 "css/" +
                 (isDev ? "[name].[id].css" : "[id].[contenthash:8].css"),
         }),
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+        }),
+        new webpack.HotModuleReplacementPlugin(),
     ];
 }
