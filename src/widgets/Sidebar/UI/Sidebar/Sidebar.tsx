@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import cls from "./Sidebar.module.scss";
-import { ThemeSwitcher } from "features/ThemeSwitcher";
-import { LangSwitcher } from "features/LangSwitcher/UI/LangSwitcher";
+import { useState } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { ThemeSwitcher } from 'features/ThemeSwitcher';
+import { LangSwitcher } from 'features/LangSwitcher/UI/LangSwitcher';
+import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
     className?: string;
@@ -23,7 +23,6 @@ export const Sidebar = (props: SidebarProps) => {
             ])}
         >
             <button onClick={toggleCollapsed}>collapsed</button>
-
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang} />
